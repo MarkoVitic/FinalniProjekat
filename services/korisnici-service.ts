@@ -2,6 +2,7 @@ import { DataSource } from "typeorm";
 import { update } from "lodash";
 import korisniciRepositori from "../repositori/korisnici-repositori";
 import cryto from "crypto";
+import jwt from "jsonwebtoken";
 
 const getAllKorisnici = async () => {
   const data = await korisniciRepositori.getAllKprisnici();
@@ -31,9 +32,44 @@ const createKorisnik = async (korisnik: any) => {
     .createHash("md5")
     .update(korisnik.password)
     .digest("hex");
-  const data = await korisniciRepositori.createKorisnik(korisnik);
-  console.log(data);
-  return data;
+  const data: any = await korisniciRepositori.createKorisnik(korisnik);
+  if (data.affectedRows > 0) {
+    const token = jwt.sign(
+      {
+        email: korisnik.email,
+        role: "user",
+      },
+      "NEKINASkljuc"
+    );
+    return { succes: true, token };
+  } else {
+    return { sucess: false, data };
+  }
 };
 
-export default { getAllKorisnici, createKorisnik };
+const loginKorisnik = async (korisnik: any) => {
+  korisnik.password = cryto
+    .createHash("md5")
+    .update(korisnik.password)
+    .digest("hex");
+  const data = await korisniciRepositori.loginKorisnik(korisnik);
+  console.log(data);
+
+  if (data && data.length > 0) {
+    const token = jwt.sign(
+      {
+        email: korisnik.email,
+        role: korisnik.role == "admin" ? true : false,
+      },
+      "NEKINASkljuc"
+    );
+    return { succes: true, token };
+  } else {
+    return {
+      sucess: false,
+      msg: "There is no user with taht email or password",
+    };
+  }
+};
+
+export default { getAllKorisnici, createKorisnik, loginKorisnik };

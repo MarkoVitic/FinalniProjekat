@@ -30,4 +30,16 @@ const createKorisnik = async (korisnik: any) => {
   }
 };
 
-export default { getAllKprisnici, createKorisnik };
+const loginKorisnik = async (korinik: any) => {
+  try {
+    const data = await dbConnection.query(
+      `SELECT * FROM users WHERE email=? AND password=?`,
+      [korinik.email, korinik.password]
+    );
+    return data;
+  } catch (err) {
+    return { succes: false, msg: err };
+  }
+};
+
+export default { getAllKprisnici, createKorisnik, loginKorisnik };

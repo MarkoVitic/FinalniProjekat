@@ -1,12 +1,13 @@
 import express from "express";
 import apartmnControler from "../controllers/apartmn-controler";
+import authMiddelware from "../common/auth-middleware";
 
 const apartmaniObjekta = express.Router();
 
 apartmaniObjekta
   .route("/objekti/:id/apartman")
   .get(apartmnControler.getAllApartmane)
-  .post(apartmnControler.createApartman);
+  .post(authMiddelware, apartmnControler.createApartman);
 apartmaniObjekta
   .route("/objekti/:id/:apartmanId")
   .get(apartmnControler.getSingleApartman)

@@ -11,4 +11,9 @@ const createKornisk = async (req: Request, res: Response) => {
   res.send(data);
 };
 
-export default { getAllKorisnici, createKornisk };
+const loginKorisnik = async (req: Request, res: Response) => {
+  const data = await korisniciService.loginKorisnik(req.body);
+  res.send(data);
+};
+
+export default { getAllKorisnici, createKornisk, loginKorisnik };

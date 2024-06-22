@@ -7,5 +7,6 @@ korisnici
   .route("/korisnici")
   .get(korisniciControler.getAllKorisnici)
   .post(korisniciControler.createKornisk);
+korisnici.route("/login").post(korisniciControler.loginKorisnik);
 
 export default korisnici;
