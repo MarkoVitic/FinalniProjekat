@@ -6,8 +6,9 @@ import { dbConnection } from "./common/db-conection";
 import galerijaApartmana from "./routing/galerija-routing";
 import korisnici from "./routing/korisnici-routing";
 import rezervacijeRouting from "./routing/rezervacija-routing";
-
+import cors from "cors";
 const app = express();
+app.use(cors());
 
 app.use(express.json());
 app.use("/api/v1", objektiZaRentiranje);

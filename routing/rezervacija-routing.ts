@@ -11,4 +11,8 @@ rezervacijeRouting
   .route("/rezervacije/:userId")
   .post(rezervacijaContoler.createRezervaciju);
 
+rezervacijeRouting
+  .route("/rezervacije/:userId/:rezervacijaId")
+  .delete(rezervacijaContoler.deleteRezervacija);
+
 export default rezervacijeRouting;

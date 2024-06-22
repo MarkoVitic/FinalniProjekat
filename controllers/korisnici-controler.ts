@@ -8,7 +8,7 @@ const getAllKorisnici = async (req: Request, res: Response) => {
 
 const createKornisk = async (req: Request, res: Response) => {
   const data = await korisniciService.createKorisnik(req.body);
-  res.send(data).json(data);
+  res.send(data);
 };
 
 export default { getAllKorisnici, createKornisk };

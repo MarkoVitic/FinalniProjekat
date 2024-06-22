@@ -41,4 +41,18 @@ const createRezervaciju = async (userId: number, rezervacija: any) => {
   }
 };
 
-export default { getAllRezervacije, createRezervaciju, checkDateAvailable };
+const deleteRezervacije = async (userId: number, rezervacijaId: number) => {
+  const data = await rezervacijaRepositori.delteRezervaciju(
+    userId,
+    rezervacijaId
+  );
+
+  return data;
+};
+
+export default {
+  getAllRezervacije,
+  createRezervaciju,
+  checkDateAvailable,
+  deleteRezervacije,
+};

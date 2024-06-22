@@ -10,20 +10,24 @@ const getAllKprisnici = async () => {
 };
 
 const createKorisnik = async (korisnik: any) => {
-  const data = await dbConnection.query(
-    `INSERT INTO users(name,last_name,drzava,grad,telefon, email,password ) VALUES
-    (?,?,?,?,?,?,?)`,
-    [
-      korisnik.imeKorisnika,
-      korisnik.prezimeKorisnika,
-      korisnik.drzava,
-      korisnik.grad,
-      korisnik.telefon,
-      korisnik.email,
-      korisnik.password,
-    ]
-  );
-  return data;
+  try {
+    const data = await dbConnection.query(
+      `INSERT INTO users(name,last_name,drzava,grad,telefon, email,password,role ) VALUES
+      (?,?,?,?,?,?,?,0)`,
+      [
+        korisnik.imeKorisnika,
+        korisnik.prezimeKorisnika,
+        korisnik.drzava,
+        korisnik.grad,
+        korisnik.telefon,
+        korisnik.email,
+        korisnik.password,
+      ]
+    );
+    return data;
+  } catch (err: any) {
+    return { succes: false, msg: err };
+  }
 };
 
 export default { getAllKprisnici, createKorisnik };

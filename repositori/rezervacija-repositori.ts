@@ -56,4 +56,21 @@ const checkDateAvailable = async (rezervacija: any) => {
   }
 };
 
-export default { getAllRezervacije, createRezervaciju, checkDateAvailable };
+const delteRezervaciju = async (userId: number, rezervacijaId: number) => {
+  try {
+    const data = await dbConnection.query(
+      `DELETE FROM rezervacija WHERE user_id = ? AND rezervacije_id = ?`,
+      [userId, rezervacijaId]
+    );
+    return data;
+  } catch (err) {
+    return { success: false, msg: err };
+  }
+};
+
+export default {
+  getAllRezervacije,
+  createRezervaciju,
+  checkDateAvailable,
+  delteRezervaciju,
+};

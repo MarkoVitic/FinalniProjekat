@@ -24,7 +24,7 @@ const getSingleObjekat = async (id: number) => {
 const createObjekat = async (objekat: any) => {
   try {
     const data = await dbConnection.query(
-      `INSERT INTO naziv_objekta(naziv_apartmana,drzava_objekta,grad_objekta,ulica_objekta,email_objekta,telefon_objekta) VALUES(?,?,?,?,?,?)`,
+      `INSERT INTO naziv_objekta(naziv_apartmana,drzava_objekta,grad_objekta,ulica_objekta,email_objekta,telefon_objekta,opis_objekta) VALUES(?,?,?,?,?,?,?)`,
       [
         objekat.nazivApartmana,
         objekat.drzava,
@@ -32,6 +32,7 @@ const createObjekat = async (objekat: any) => {
         objekat.ulica,
         objekat.email,
         objekat.telefon,
+        objekat.opis,
       ]
     );
   } catch (err) {

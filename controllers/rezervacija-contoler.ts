@@ -18,9 +18,14 @@ const createRezervaciju = async (req: Request, res: Response) => {
   res.send(data);
 };
 
-// const checkDateAvailable = async (req: Request, res: Response) => {
-//   const data = await rezervacijaService.checkDateAvailable(req.body);
-//   res.send(data);
-// };
+const deleteRezervacija = async (req: Request, res: Response) => {
+  const userId = req.params.userId;
+  const rezervacijaId = req.params.rezervacijaId;
+  const data = await rezervacijaService.deleteRezervacije(
+    parseInt(userId),
+    parseInt(rezervacijaId)
+  );
+  res.send(data);
+};
 
-export default { getAllRezervacije, createRezervaciju };
+export default { getAllRezervacije, createRezervaciju, deleteRezervacija };

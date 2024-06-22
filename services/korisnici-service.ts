@@ -1,6 +1,7 @@
 import { DataSource } from "typeorm";
 import { update } from "lodash";
 import korisniciRepositori from "../repositori/korisnici-repositori";
+import cryto from "crypto";
 
 const getAllKorisnici = async () => {
   const data = await korisniciRepositori.getAllKprisnici();
@@ -26,6 +27,10 @@ const getAllKorisnici = async () => {
 };
 
 const createKorisnik = async (korisnik: any) => {
+  korisnik.password = cryto
+    .createHash("md5")
+    .update(korisnik.password)
+    .digest("hex");
   const data = await korisniciRepositori.createKorisnik(korisnik);
   console.log(data);
   return data;

@@ -14,6 +14,7 @@ const getAllObjekti = async () => {
       ulica: apartman.ulica_objekta,
       email: apartman.email_objekta,
       telefon: apartman.telefon_objekta,
+      opis: apartman.opis_objekta,
     });
   });
   return result;
@@ -31,6 +32,7 @@ const getSingleObjekat = async (id: number) => {
       ulica: data[0].ulica_objekta,
       email: data[0].email_objekta,
       telefon: data[0].telefon_objekta,
+      opis: data[0].opis_objekta,
     };
   }
   return null;
