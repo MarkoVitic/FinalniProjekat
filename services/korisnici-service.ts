@@ -33,6 +33,7 @@ const createKorisnik = async (korisnik: any) => {
     .update(korisnik.password)
     .digest("hex");
   const data: any = await korisniciRepositori.createKorisnik(korisnik);
+
   if (data.affectedRows > 0) {
     const token = jwt.sign(
       {

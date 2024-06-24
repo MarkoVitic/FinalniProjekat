@@ -7,6 +7,10 @@ import galerijaApartmana from "./routing/galerija-routing";
 import korisnici from "./routing/korisnici-routing";
 import rezervacijeRouting from "./routing/rezervacija-routing";
 import cors from "cors";
+import path from "path";
+import fileUploadRouter from "./common/file-upload";
+import kontaktForma from "./routing/kontaktForma-routing";
+
 const app = express();
 app.use(cors());
 
@@ -16,6 +20,10 @@ app.use("/api/v1", apartmaniObjekta);
 app.use("/api/v1", galerijaApartmana);
 app.use("/api/v1", korisnici);
 app.use("/api/v1", rezervacijeRouting);
+app.use("/api/v1", kontaktForma);
+app.use(fileUploadRouter);
+
+app.use(express.static(path.join(__dirname, "public")));
 
 // app.use("/");
 
