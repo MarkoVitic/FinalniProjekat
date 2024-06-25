@@ -14,6 +14,7 @@ const createKornisk = async (req: Request, res: Response) => {
 
 const loginKorisnik = async (req: Request, res: Response) => {
   const data = await korisniciService.loginKorisnik(req.body);
+
   res.send(data);
 };
 
