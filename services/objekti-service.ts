@@ -45,6 +45,7 @@ const createObjekat = async (objekat: any) => {
 
 const deleteObjekat = async (id: number) => {
   const data = await objektiRepositori.deleteObjekat(id);
+  console.log(data, "services");
   return data;
 };
 

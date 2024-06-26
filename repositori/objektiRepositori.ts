@@ -41,8 +41,10 @@ const createObjekat = async (objekat: any) => {
 };
 
 const deleteObjekat = async (id: number) => {
+  console.log(id, "repositori");
   const data = await dbConnection.query(
-    `DELETE FROM naziv_objekta WHERE apartman_id = ${id}`
+    `DELETE FROM naziv_objekta WHERE apartman_id = ?`,
+    [id]
   );
 };
 

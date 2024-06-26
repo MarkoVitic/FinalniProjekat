@@ -23,6 +23,7 @@ const createObjekat = async (req: Request, res: Response) => {
 const deleteObjekat = async (req: Request, res: Response) => {
   const id = req.params.id;
   const data = await apartmaniService.deleteObjekat(parseInt(id));
+  console.log(data, "kontroler");
   res.status(200).send(data);
 };
 

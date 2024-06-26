@@ -8,10 +8,8 @@ objektiZaRentiranje.route("/objekti").get(objektiKontroler.getAllObjekti);
 objektiZaRentiranje
   .route("/objekti/:id")
   .get(objektiKontroler.getSingleObjekat)
-  .delete(authMiddelware, objektiKontroler.deleteObjekat)
-  .put(authMiddelware, objektiKontroler.updateObjekat);
-objektiZaRentiranje
-  .route("/objekti")
-  .post(authMiddelware, objektiKontroler.createObjekat);
+  .delete(objektiKontroler.deleteObjekat)
+  .put(objektiKontroler.updateObjekat);
+objektiZaRentiranje.route("/objekti").post(objektiKontroler.createObjekat);
 
 export default objektiZaRentiranje;
