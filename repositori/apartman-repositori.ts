@@ -24,11 +24,11 @@ const updateApartman = async (id: number, naziv: string, apartman: any) => {
   const data = await dbConnection.query(
     `UPDATE apartman SET naziv_apartmana =?, opis_apartmanA =?, sprat_apartmana=?, cijena_po_danu=?, max_broj_osoba =?, updated = CURRENT_TIMESTAMP   WHERE apartman_id=? AND naziv_apartmana = ?`,
     [
-      apartman.naziv,
-      apartman.opis,
-      apartman.sprat,
-      apartman.cijena,
-      apartman.maxOsoba,
+      apartman.naziv_apartmana,
+      apartman.opis_apartmanA,
+      apartman.sprat_apartmana,
+      apartman.cijena_po_danu,
+      apartman.max_broj_osoba,
       id,
       naziv,
     ]
@@ -53,11 +53,11 @@ const createApartman = async (id: number, apartman: any) => {
     ) VALUES(?,?,?,?,?,?,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP)`,
       [
         id,
-        apartman.naziv,
-        apartman.opis,
-        apartman.sprat,
-        apartman.cijena,
-        apartman.maxOsoba,
+        apartman.naziv_apartmana,
+        apartman.opis_apartmanA,
+        apartman.sprat_apartmana,
+        apartman.cijena_po_danu,
+        apartman.max_broj_osoba,
       ]
     );
 

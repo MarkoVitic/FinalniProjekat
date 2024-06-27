@@ -50,8 +50,17 @@ const deleteObjekat = async (id: number) => {
 
 const updateObjekat = async (id: number, objekat: any) => {
   const data = await dbConnection.query(
-    "UPDATE naziv_objekta SET naziv_apartmana =? WHERE apartman_id=?",
-    [objekat.nazivApartmana, id]
+    "UPDATE naziv_objekta SET naziv_apartmana =?, drzava_objekta=?, grad_objekta=?, ulica_objekta=?, email_objekta=?, telefon_objekta=?, opis_objekta=? WHERE apartman_id=?",
+    [
+      objekat.nazivApartmana,
+      objekat.drzava,
+      objekat.grad,
+      objekat.ulica,
+      objekat.email,
+      objekat.telefon,
+      objekat.opis,
+      id,
+    ]
   );
 };
 

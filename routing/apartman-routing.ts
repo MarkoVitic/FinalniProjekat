@@ -7,7 +7,7 @@ const apartmaniObjekta = express.Router();
 apartmaniObjekta
   .route("/objekti/:id/apartman")
   .get(apartmnControler.getAllApartmane)
-  .post(authMiddelware, apartmnControler.createApartman);
+  .post(apartmnControler.createApartman);
 apartmaniObjekta
   .route("/objekti/:id/:apartmanId")
   .get(apartmnControler.getSingleApartman)

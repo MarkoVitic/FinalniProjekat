@@ -9,6 +9,13 @@ const getSingleApartman = async (id: number, naziv: string) => {
   const data = await apartmanRepositori.getSingleApartman(id, naziv);
 
   return data;
+
+  // if (data) {
+  //   naziv: data[0].naziv_apartmana;
+  //   opis: data[0].opis_apartmanA;
+  //   sprat: data[0].sprat_apartmana;
+  //   cijena: data[0].cijena_po_danu;
+  // }
 };
 
 const deleteApartman = async (id: number, naziv: string) => {
