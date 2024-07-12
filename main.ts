@@ -12,9 +12,9 @@ import fileUploadRouter from "./common/file-upload";
 import kontaktForma from "./routing/kontaktForma-routing";
 
 const app = express();
-app.use(cors());
 
 app.use(express.json());
+app.use(cors());
 app.use("/api/v1", objektiZaRentiranje);
 app.use("/api/v1", apartmaniObjekta);
 app.use("/api/v1", galerijaApartmana);

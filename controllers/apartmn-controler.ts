@@ -33,6 +33,7 @@ const updateApartman = async (req: Request, res: Response) => {
 const deleteApartman = async (req: Request, res: Response) => {
   const id = req.params.id;
   const apartmanId = req.params.apartmanId;
+  console.log(id, apartmanId);
   const data = await apartmanService.deleteApartman(parseInt(id), apartmanId);
   res.send(data);
 };

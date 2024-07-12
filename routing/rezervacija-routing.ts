@@ -1,5 +1,6 @@
 import express from "express";
 import rezervacijaContoler from "../controllers/rezervacija-contoler";
+import authMiddelware from "../common/auth-middleware";
 
 const rezervacijeRouting = express.Router();
 
@@ -9,10 +10,10 @@ rezervacijeRouting
 
 rezervacijeRouting
   .route("/rezervacije/:userId")
-  .post(rezervacijaContoler.createRezervaciju);
+  .post(authMiddelware, rezervacijaContoler.createRezervaciju);
 
 rezervacijeRouting
   .route("/rezervacije/:userId/:rezervacijaId")
-  .delete(rezervacijaContoler.deleteRezervacija);
+  .delete(authMiddelware, rezervacijaContoler.deleteRezervacija);
 
 export default rezervacijeRouting;

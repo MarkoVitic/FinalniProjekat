@@ -7,11 +7,11 @@ const apartmaniObjekta = express.Router();
 apartmaniObjekta
   .route("/objekti/:id/apartman")
   .get(apartmnControler.getAllApartmane)
-  .post(apartmnControler.createApartman);
+  .post(authMiddelware, apartmnControler.createApartman);
 apartmaniObjekta
   .route("/objekti/:id/:apartmanId")
   .get(apartmnControler.getSingleApartman)
-  .delete(apartmnControler.deleteApartman)
-  .put(apartmnControler.updateApartman);
+  .delete(authMiddelware, apartmnControler.deleteApartman)
+  .put(authMiddelware, apartmnControler.updateApartman);
 
 export default apartmaniObjekta;
